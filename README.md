@@ -1,7 +1,9 @@
 ===== Aplikasi Adaptable =====
+
 Aplikasi Adaptable yang sudah di-deploy dapat diakses melalui tautan berikut: https://ghina27-app.adaptable.app
 
 ===== Implementasi Step-by-Step =====
+
 ✅ Membuat sebuah proyek Django baru.
     - Buat direktori baru dengan nama restaurant_list.
     - Di dalam direktori tersebut, buka command prompt (Windows).
@@ -56,6 +58,7 @@ Namun, mari kita bahas lebih lanjut mengenai alasan-alasan utama penggunaannya:
     - Memudahkan Pemeliharaan: Dengan menggunakan Virtual Environment, Anda dapat dengan mudah menyimpan konfigurasi dependensi proyek, membuatnya portabel, dan berbagi dengan tim pengembangan.
 
 ===== MVC, MVT, dan MVVM =====
+
 Perbedaan ketiganya: MVC adalah pendekatan yang lebih tua dan terpisah, MVT adalah pendekatan yang digunakan dalam Django, dan MVVM adalah pendekatan yang populer dalam pengembangan aplikasi web berbasis JavaScript.
 
 Perbedaan utama adalah bagaimana komponen-komponen ini berinteraksi satu sama lain dalam arsitektur aplikasi. 

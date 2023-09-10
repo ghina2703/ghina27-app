@@ -8,3 +8,12 @@
     <p>Dibuat oleh {{ my_name }} dari kelas {{ my_class }}</p>
 </body>
 </html>
+
+<div>
+    {% for barang in item %}
+    <p>{{ barang.name }}</p>
+    <p>{{ barang.amount }}</p>
+    <p>{{ barang.price }}</p>
+    <p>{{ barang.description|linebreaks }}</p>
+    {% endfor %}
+</div>

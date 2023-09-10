@@ -3,7 +3,7 @@ from .models import Item
 # Create your views here.
 def show_main(request):
     context = {
-        'app_name': 'ghina2703',
+        'app_name': 'ghina27-app',
         'my_name': 'Ghina Nabila Gunawan',
         'my_class': 'PBP B',
         'item': Item.objects.all(),

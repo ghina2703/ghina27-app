@@ -2,13 +2,32 @@
 <html>
 <head>
     <title>{{ app_name }}</title>
+    <style>
+        body {
+            background-color: rgb(165, 208, 223); /* Ganti dengan warna yang Anda inginkan */
+        }
+    </style>
 </head>
 <body>
-    <h1>Selamat datang di Aplikasi {{ app_name }}</h1>
-    <p>Dibuat oleh {{ my_name }} dari kelas {{ my_class }}</p>
-</body>
-</html>
+    <h1>Selamat Datang di Aplikasi {{ app_name }}</h1>
+    <h4>~ Owner ~</h4>
+    <h4>Name: </h4>
+    <p>{{ my_name }}<p>
+    <h4>Class: </h4>
+    <p>{{ my_class }}<p>
+    <p> </p>
+    <h3>=== Restaurant Menu === </h3>
+    <h5>Nama Menu: </h5>
+    <p>{{ menu_name }}<p>
+    <h5>Stok Menu: </h5>
+    <p>{{ menu_amount }}<p>
+    <h5>Harga Menu: </h5>
+    <p>{{ menu_price }}<p>
+    <h5>Deskripsi: </h5>
+    <p>{{ menu_description }}<p>
+    <img src="https://www.anakui.com/wp-content/uploads/2021/03/5f7d91b5eb998.jpg" alt="Sate Pacil" width="300" height="200">
 
+</body>
 <div>
     {% for barang in item %}
     <p>{{ barang.name }}</p>
@@ -17,3 +36,4 @@
     <p>{{ barang.description|linebreaks }}</p>
     {% endfor %}
 </div>
+</html>

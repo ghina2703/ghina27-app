@@ -1,39 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends 'base.html' %}
+{% block content %}
+<head> 
     <title>{{ app_name }}</title>
-    <style>
-        body {
-            background-color: rgb(165, 208, 223); /* Ganti dengan warna yang Anda inginkan */
-        }
-    </style>
 </head>
-<body>
-    <h1>Selamat Datang di Aplikasi {{ app_name }}</h1>
-    <h4>~ Owner ~</h4>
-    <h4>Name: </h4>
-    <p>{{ my_name }}<p>
-    <h4>Class: </h4>
-    <p>{{ my_class }}<p>
-    <p> </p>
-    <h3>=== Restaurant Menu === </h3>
-    <h5>Nama Menu: </h5>
-    <p>{{ menu_name }}<p>
-    <h5>Stok Menu: </h5>
-    <p>{{ menu_amount }}<p>
-    <h5>Harga Menu: </h5>
-    <p>{{ menu_price }}<p>
-    <h5>Deskripsi: </h5>
-    <p>{{ menu_description }}<p>
-    <img src="https://www.anakui.com/wp-content/uploads/2021/03/5f7d91b5eb998.jpg" alt="Sate Pacil" width="300" height="200">
+<div style="background-color: #aee4e4; padding: 20px;">
+    <h1 style="text-align: center;">Selamat Datang di Aplikasi {{ app_name }}</h1>
 
-</body>
-<div>
-    {% for barang in item %}
-    <p>{{ barang.name }}</p>
-    <p>{{ barang.amount }}</p>
-    <p>{{ barang.price }}</p>
-    <p>{{ barang.description|linebreaks }}</p>
-    {% endfor %}
+    <div style="text-align: center;">
+        <h4>~ Owner ~</h4>
+        <h4>Name:</h4>
+        <p>{{ my_name }}</p>
+
+        <h4>Class:</h4>
+        <p>{{ my_class }}</p>
+        
+        <p style="font-weight: bold;">Kamu menyimpan {{ num_items }} item pada aplikasi ini.</p>
+    </div>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <tr>
+            <th style="border: 1px solid #000; padding: 10px;">Name</th>
+            <th style="border: 1px solid #000; padding: 10px;">Amount</th>
+            <th style="border: 1px solid #000; padding: 10px;">Price</th>
+            <th style="border: 1px solid #000; padding: 10px;">Description</th>
+            <th style="border: 1px solid #000; padding: 10px;">Date Added</th>
+        </tr>
+
+        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+        {% for item in items %}
+        <tr>
+            <td style="border: 1px solid #000; padding: 10px;">{{ item.name }}</td>
+            <td style="border: 1px solid #000; padding: 10px;">{{ item.amount }}</td>
+            <td style="border: 1px solid #000; padding: 10px;">{{ item.price }}</td>
+            <td style="border: 1px solid #000; padding: 10px;">{{ item.description|linebreaks }}</td>
+            <td style="border: 1px solid #000; padding: 10px;">{{ item.date_added }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br />
+
+    <div style="text-align: center;">
+        <a href="{% url 'main:create_product' %}">
+            <button style="background-color: #0080ff; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">
+                Add New Product
+            </button>
+        </a>
+    </div>
 </div>
-</html>
+{% endblock content %}

@@ -8,7 +8,7 @@ Kelas: PBP-B
     1. Form POST:\
     - Ketika data dikirim menggunakan metode POST, data akan dikirimkan dalam HTTP request body, sehingga data tidak terlihat di URL.\
     - Data yang dikirim melalui POST cocok untuk data sensitif atau data yang besar.\
-    - Biasanya digunakan saat kita ingin mengirim data yang akan menyebabkan perubahan pada server,\ seperti membuat entri baru di basis data.\
+    - Biasanya digunakan saat kita ingin mengirim data yang akan menyebabkan perubahan pada server, seperti membuat entri baru di basis data.\
     2. Form GET:\
     - Ketika data dikirim menggunakan metode GET, data akan ditambahkan ke URL sebagai parameter query string.\
     - Data yang dikirim melalui GET seharusnya tidak sensitif dan sebaiknya tidak mengandung data yang sangat besar.\
@@ -16,15 +16,15 @@ Kelas: PBP-B
 
 **===== Perbedaan antara XML, JSON, dan HTML dalam konteks pengiriman data =====**\
     1. XML (eXtensible Markup Language):\
-    - XML adalah markup language yang digunakan untuk mendefinisikan\ struktur data yang dapat disesuaikan.\
-    - XML menggunakan tag yang dapat disesuaikan oleh user untuk \mendefinisikan elemen-elemen data.\
+    - XML adalah markup language yang digunakan untuk mendefinisikan struktur data yang dapat disesuaikan.\
+    - XML menggunakan tag yang dapat disesuaikan oleh user untuk mendefinisikan elemen-elemen data.\
     - XML lebih kompleks dan berat dibandingkan JSON dan HTML.\
-    - Digunakan dalam beberapa konteks, seperti pertukaran data antar\ aplikasi dan penyimpanan konfigurasi.\
+    - Digunakan dalam beberapa konteks, seperti pertukaran data antar aplikasi dan penyimpanan konfigurasi.\
 \
     2. JSON (JavaScript Object Notation):\
-    - JSON adalah lightweight data format yang digunakan untuk\ pertukaran data antara aplikasi modern web.\
-    - JSON menggunakan objek JavaScript untuk mewakili data dalam format teks.
-    - JSON lebih mudah dibaca/diterjemahkan dalam bahasa manusia/ dan lebih mudah diurai oleh mesin dibandingkan XML.
+    - JSON adalah lightweight data format yang digunakan untuk pertukaran data antara aplikasi modern web.\
+    - JSON menggunakan objek JavaScript untuk mewakili data dalam format teks.\
+    - JSON lebih mudah dibaca/diterjemahkan dalam bahasa manusia dan lebih mudah diurai oleh mesin dibandingkan XML.\
     - Digunakan secara luas dalam RESTful API dan komunikasi antar aplikasi.
 \
     3. HTML (HyperText Markup Language):\
@@ -46,7 +46,7 @@ Kelas: PBP-B
     - Membuat berkas baru pada direktori 'main' dengan nama 'forms.py' untuk membuat struktur form yang dapat menerima data produk baru.\
     - Menambahkan impor pada berkas 'views.py' yaitu 'HttpResponseRedirect' , 'ProductForm' , dan 'reverse'.\
     - Membuat fungsi baru dengan nama 'create_product' pada berkas tersebut yang menerima parameter 'request'.\
-    - Mengubah fungsi 'show_main' pada berkas 'views.py' dengan ' 'items': Item.objects.all(), ' .
+    - Mengubah fungsi 'show_main' pada berkas 'views.py' dengan ' 'items': Item.objects.all(), ' .\
     - Membuat berkas HTML baru dengan nama 'create_product.html' pada direktori 'main/templates'.\
     - Membuka 'main.html' dan menambahkan beberapa baris kode di dalam '{% block content %}' untuk menampilkan data produk dalam bentuk table serta tombol "Add New Product" yang akan redirect ke halaman form.
 
@@ -87,7 +87,7 @@ Kelas: PBP-B
     - Tambahkan path url ke dalam 'urlpatterns' untuk mengakses fungsi yang sudah diimpor tadi.\
     5. JSON by ID\
     - Buka 'urls.py' yang ada pada folder 'main' dan impor fungsi 'show_json_by_id'.\
-    - Tambahkan path url ke dalam 'urlpatterns' untuk mengakses fungsi yang sudah diimpor tadi.\
+    - Tambahkan path url ke dalam 'urlpatterns' untuk mengakses fungsi yang sudah diimpor tadi.
 
 ✅ Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
 
@@ -96,8 +96,8 @@ Kelas: PBP-B
     - Di dalam file 'main.html', saya menambahkan pesan 'Kamu menyimpan {{ num_items }} item pada aplikasi ini.'
 
 
-**===== Mengakses kelima URL di poin 2 menggunakan Postman =====**\
-1. HTML]
+**===== Mengakses kelima URL di poin 2 menggunakan Postman =====**
+1. HTML
 ![Alt text](Postman_HTML.png)
 
 2. XML

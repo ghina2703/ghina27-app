@@ -109,7 +109,11 @@ Untuk menghindari risiko ini, pengembang web harus menggunakan cookies dengan ha
     - Ketika data dikirim menggunakan metode POST, data akan dikirimkan dalam HTTP request body, sehingga data tidak terlihat di URL.\
     - Data yang dikirim melalui POST cocok untuk data sensitif atau data yang besar.\
     - Biasanya digunakan saat kita ingin mengirim data yang akan menyebabkan perubahan pada server, seperti membuat entri baru di basis data.\
+    - Biasanya digunakan saat kita ingin mengirim data yang akan menyebabkan perubahan pada server, seperti membuat entri baru di basis data.\
     2. Form GET:\
+    - Ketika data dikirim menggunakan metode GET, data akan ditambahkan ke URL sebagai parameter query string.\
+    - Data yang dikirim melalui GET seharusnya tidak sensitif dan sebaiknya tidak mengandung data yang sangat besar.\
+    - Biasanya digunakan saat kita ingin melakukan pencarian atau mengakses server-side resource tanpa mempengaruhi status server.
     - Ketika data dikirim menggunakan metode GET, data akan ditambahkan ke URL sebagai parameter query string.\
     - Data yang dikirim melalui GET seharusnya tidak sensitif dan sebaiknya tidak mengandung data yang sangat besar.\
     - Biasanya digunakan saat kita ingin melakukan pencarian atau mengakses server-side resource tanpa mempengaruhi status server.
@@ -118,10 +122,16 @@ Untuk menghindari risiko ini, pengembang web harus menggunakan cookies dengan ha
     1. XML (eXtensible Markup Language):\
     - XML adalah markup language yang digunakan untuk mendefinisikan struktur data yang dapat disesuaikan.\
     - XML menggunakan tag yang dapat disesuaikan oleh user untuk mendefinisikan elemen-elemen data.\
+    - XML adalah markup language yang digunakan untuk mendefinisikan struktur data yang dapat disesuaikan.\
+    - XML menggunakan tag yang dapat disesuaikan oleh user untuk mendefinisikan elemen-elemen data.\
     - XML lebih kompleks dan berat dibandingkan JSON dan HTML.\
+    - Digunakan dalam beberapa konteks, seperti pertukaran data antar aplikasi dan penyimpanan konfigurasi.\
     - Digunakan dalam beberapa konteks, seperti pertukaran data antar aplikasi dan penyimpanan konfigurasi.\
 \
     2. JSON (JavaScript Object Notation):\
+    - JSON adalah lightweight data format yang digunakan untuk pertukaran data antara aplikasi modern web.\
+    - JSON menggunakan objek JavaScript untuk mewakili data dalam format teks.\
+    - JSON lebih mudah dibaca/diterjemahkan dalam bahasa manusia dan lebih mudah diurai oleh mesin dibandingkan XML.\
     - JSON adalah lightweight data format yang digunakan untuk pertukaran data antara aplikasi modern web.\
     - JSON menggunakan objek JavaScript untuk mewakili data dalam format teks.\
     - JSON lebih mudah dibaca/diterjemahkan dalam bahasa manusia dan lebih mudah diurai oleh mesin dibandingkan XML.\
@@ -160,11 +170,17 @@ Untuk menghindari risiko ini, pengembang web harus menggunakan cookies dengan ha
     - Buka 'urls.py' yang ada pada folder 'main' dan import fungsi yang sudah dibuat tadi.\
     - Menambahkan path url ke dalam 'urlpatterns' untuk mengakses fungsi yang sudah diimpor tadi.\
     3. JSON\
+    - Menambahkan path url ke dalam 'urlpatterns' untuk mengakses fungsi yang sudah diimpor tadi.\
+    3. JSON\
     - Membuka 'views.py' yang ada pada folder 'main' dan buatlah sebuah fungsi baru yang menerima parameter request dengan nama 'show_json' dengan sebuah variabel di dalamnya yang menyimpan hasil query dari seluruh data yang ada pada 'Product'.\
+    - Menambahkan return function berupa 'HttpResponse' yang berisi parameter data hasil query yang sudah diserialisasi menjadi JSON dan parameter ' content_type="application/json" '.\
+    4. XML by ID\
     - Menambahkan return function berupa 'HttpResponse' yang berisi parameter data hasil query yang sudah diserialisasi menjadi JSON dan parameter ' content_type="application/json" '.\
     4. XML by ID\
     - Membuat sebuah fungsi baru yang menerima parameter request dan id dengan nama 'views.py' yang ada pada folder main dan 'show_xml_by_id'.\
     - Membuat sebuah variabel di dalam fungsi tersebut yang menyimpan hasil query dari data dengan id tertentu yang ada pada 'Product'.\
+    - Tambahkan return function berupa 'HttpResponse' yang berisi parameter data hasil query yang sudah diserialisasi menjadi XML dan parameter 'content_type' dengan value  ' "application/xml" '.\
+    5. JSON by ID\
     - Tambahkan return function berupa 'HttpResponse' yang berisi parameter data hasil query yang sudah diserialisasi menjadi XML dan parameter 'content_type' dengan value  ' "application/xml" '.\
     5. JSON by ID\
     - Membuat sebuah fungsi baru yang menerima parameter request dan id dengan nama 'views.py' yang ada pada folder main dan 'show_json_by_id'.\
@@ -180,10 +196,16 @@ Untuk menghindari risiko ini, pengembang web harus menggunakan cookies dengan ha
     - Buka 'urls.py' yang ada pada folder 'main' dan import fungsi 'show_xml'.\
     - Menambahkan path url ke dalam 'urlpatterns' untuk mengakses fungsi yang sudah diimpor tadi.\
     3. JSON\
+    - Menambahkan path url ke dalam 'urlpatterns' untuk mengakses fungsi yang sudah diimpor tadi.\
+    3. JSON\
     - Buka 'urls.py' yang ada pada folder 'main' dan import fungsi 'show_json'.\
     - Menambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor tadi.\
     4. XML by ID\
+    - Menambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor tadi.\
+    4. XML by ID\
     - Buka 'urls.py' yang ada pada folder 'main' dan impor fungsi 'show_xml_by_id'.\
+    - Tambahkan path url ke dalam 'urlpatterns' untuk mengakses fungsi yang sudah diimpor tadi.\
+    5. JSON by ID\
     - Tambahkan path url ke dalam 'urlpatterns' untuk mengakses fungsi yang sudah diimpor tadi.\
     5. JSON by ID\
     - Buka 'urls.py' yang ada pada folder 'main' dan impor fungsi 'show_json_by_id'.\
@@ -198,21 +220,28 @@ Untuk menghindari risiko ini, pengembang web harus menggunakan cookies dengan ha
 
 **===== Mengakses kelima URL di poin 2 menggunakan Postman =====**
 1. HTML
+**===== Mengakses kelima URL di poin 2 menggunakan Postman =====**
+1. HTML
 ![Alt text](Postman_HTML.png)
 
+2. XML
 2. XML
 ![Alt text](Postman_XML.png)
 
 3. JSON
+3. JSON
 ![Alt text](Postman_JSON.png)
 
+4. XML by ID
 4. XML by ID
 ![Alt text](Postman_XML_by_ID.png)
 
 5. JSON by ID
+5. JSON by ID
 ![Alt text](Postman_JSON_by_ID.png)
 
 
+<h2>TUGAS 2</h2>
 <h2>TUGAS 2</h2>
 
 **===== Aplikasi Adaptable =====**\

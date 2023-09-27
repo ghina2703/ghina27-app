@@ -1,55 +1,59 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Item
-# new import tugas 3
+# new import tugas 3 dan 4
 from django.http import HttpResponseRedirect
-from main.forms import ProductForm
+from main.forms import ItemForm
 from django.urls import reverse
 from django.http import HttpResponse
 from django.core import serializers
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages  
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+import datetime
 
 # Create your views here.
+
+@login_required(login_url='/login')
 def show_main(request):
-    #tambahan kode tugas 3
-    items = Item.objects.all()
+    #tambahan kode tugas 3 dan 4
+    items = Item.objects.filter(user=request.user)
     num_items = items.count()
+    last_login = request.COOKIES['last_login']
 
     context = {
         'app_name': 'Ghina27-app',
-        'my_name': 'Ghina Nabila Gunawan',
+        'my_name': request.user.username, # modifikasi tugas 4
         'my_class': 'PBP B',
-        'menu_name': 'Sate Pacil',
-        'menu_amount': '100',
-        'menu_description': 'Ini adalah sate favorit mahasiswa Fasilkom UI',
-        'menu_price': '@4.000/tusuk',
         'items': items,
         'num_items': num_items,
+        'last_login': last_login, # menambahkan informasi cookie last_login pada response yang akan ditampilkan di halaman web.
     }
     return render(request, "main.html", context)
 
-# tugas 3
+# ========= tugas 3
 
-# kode di bawah ini untuk menghasilkan formulir yang dapat menambahkan 
-# data produk secara otomatis ketika data di-submit dari form.
-
-def create_product(request):
-    form = ProductForm(request.POST or None)
+def create_item(request):
+    form = ItemForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
-        form.save()
+        item = form.save(commit=False)
+        item.user = request.user
+        item.save()
         return HttpResponseRedirect(reverse('main:show_main'))
 
     context = {'form': form}
-    return render(request, "create_product.html", context)
+    return render(request, "create_item.html", context)
 
 def show_xml(request):
-    data = Product.objects.all()
+    data = Item.objects.all()
 
 def show_xml(request):
     data = Item.objects.all()
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
 def show_json(request):
-    data = Product.objects.all()
+    data = Item.objects.all()
 
 def show_json(request):
     data = Item.objects.all()
@@ -62,3 +66,61 @@ def show_xml_by_id(request, id):
 def show_json_by_id(request, id):
     data = Item.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+# ======== tugas 4
+def register(request):
+    form = UserCreationForm()
+
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been successfully created!')
+            return redirect('main:login')
+    context = {'form':form}
+    return render(request, 'register.html', context)
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            response = HttpResponseRedirect(reverse("main:show_main")) 
+            response.set_cookie('last_login', str(datetime.datetime.now()))
+            return response
+        else:
+            messages.info(request, 'Sorry, incorrect username or password. Please try again.')
+    context = {}
+    return render(request, 'login.html', context)
+
+def logout_user(request):
+    logout(request)
+    response = HttpResponseRedirect(reverse('main:login'))
+    response.delete_cookie('last_login')
+    return response
+
+def add_item(request, id):
+    item = get_object_or_404(Item, pk=id)
+
+    if item.amount >= 0:  # Tambahkan pengecekan stok tidak kurang dari 0
+        item.amount += 1
+        item.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def reduce_item(request, id):
+    item = get_object_or_404(Item, pk=id)
+
+    if item.amount > 0: # Tambahkan pengecekan stok tidak kurang dari 1
+        item.amount -= 1
+        item.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+def delete_item(request, id):
+    # Menggunakan get_object_or_404 untuk mendapatkan item atau mengembalikan 404 jika tidak ditemukan
+    item = Item.objects.get(pk=id)
+
+    if item.user == request.user:  
+        item.delete()
+    return redirect('main:show_main')

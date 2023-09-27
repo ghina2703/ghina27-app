@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=255)),
                 ('amount', models.IntegerField()),
                 ('description', models.TextField()),
-                ('price', models.IntegerField(default=30000)),
+                ('price', models.IntegerField(default=20000)),
                 ('date_added', models.DateField(auto_now_add=True)),
             ],
         ),

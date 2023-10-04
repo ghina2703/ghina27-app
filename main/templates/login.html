@@ -5,41 +5,65 @@
 {% endblock meta %}
 
 {% block content %}
+<style>
+    body {
+        background-color: #e1f1f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-<div class = "login">
+    .card {
+        background-color: #c2e2ec;
+        border-color: #d1e9f1;
+        width: 400px;
+        margin: 0 auto; /* Ini akan menggeser card ke tengah secara horizontal */
+    }
 
-    <h1>Login</h1>
+    .card-title {
+        color: #000;
+    }
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+    .btn-primary {
+        background-color: blue;
+        border-color: blue;
+    }
+</style>
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
-
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">Login</h1>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" placeholder="Username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" placeholder="Password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary" type="submit" value="Login">
+                        </div>
+                    </form>
+                    {% if messages %}
+                        <ul class="list-unstyled">
+                            {% for message in messages %}
+                                <li class="text-danger">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <p>Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 {% endblock content %}

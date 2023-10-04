@@ -1,7 +1,6 @@
 Nama: Ghina Nabila Gunawan\
 NPM: 2206825914\
 Kelas: PBP-B\
-Kode Asdos: ZYN
 
 <h1>TUGAS 5</h1>
 

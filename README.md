@@ -1,7 +1,7 @@
 Nama: Ghina Nabila Gunawan\
 NPM: 2206825914\
-Kelas: PBP-B
-
+Kelas: PBP-B\
+Kode Asdos: ZYN
 
 <h1>TUGAS 5</h1>
 
@@ -23,7 +23,6 @@ Kelas: PBP-B
 - `<video>`: Memasukkan video ke dalam halaman.
 - `<audio>`: Memasukkan audio ke dalam halaman.
    
-
 **===== Perbedaan antara Margin dan Padding =====**
 
 1. **Margin:** space (ruang) di luar elemen. Ini mengatur jarak antara elemen dengan elemen lain di sekitarnya. Margin tidak memiliki latar belakang dan tidak memengaruhi latar belakang elemen lain.
@@ -87,12 +86,11 @@ Tetapi saya pribadi lebih prefer menggabungkan keduanya, menurut saya gabungan a
 **[Kustom halaman login dan register]**
 - Pada kustom halaman login dan register, saya menggunakan implementasi `Card` dan melakukan styling pada bagian `body`, `.card` , `.card-title` , dan `.btn-primary`
 
-3. **{BONUS}** Memberikan warna yang berbeda (teks atau background) pada baris terakhir dari item pada inventori menggunakan CSS.
+✅ **{BONUS}** Memberikan warna yang berbeda (teks atau background) pada baris terakhir dari item pada inventori menggunakan CSS.
 - Buka `templates/main.html` pada direktori `main`.
 - Saya menambahkan CSS dalam tag `<style>` (di bagian atas `<head>`).
 - Kemudian saya menambahkan variabel yang menghitung baris yang sedang di-render, kemudian menambahkan kelas CSS ke elemen HTML yang sesuai dengan baris terakhir.
 - Saya menggunakan `forloop.last` yang disediakan oleh Django untuk mengidentifikasi baris terakhir dalam perulangan. Jika kondisi ini terpenuhi, baru kita tambahkan kelas CSS "last-row" ke elemen `<tr>` untuk baris terakhir.
-
 
 
 <h1>TUGAS 4</h1>
@@ -148,7 +146,7 @@ Untuk menghindari risiko ini, pengembang web harus menggunakan cookies dengan ha
 - Tambahkan import `redirect`, `UserCreationForm`, dan `messages` pada bagian paling atas.
 - Membuat berkas HTML baru dengan nama `register.html` pada folder `main/templates`.
 - Buka `urls.py` yang ada pada subdirektori `main` dan impor `from main.views import register` .
-- Tambahkan ` path(`register/`, register, name=`register`), ` ke dalam `urlpatterns` untuk mengakses fungsi yang sudah diimpor tadi.
+- Tambahkan ` path('register/', register, 'name=register'), ` ke dalam `urlpatterns` untuk mengakses fungsi yang sudah diimpor tadi.
   
 **[LOGIN]**
 - Buka `views.py` yang ada pada subdirektori `main` dan buatlah fungsi dengan nama `login_user` yang menerima parameter `request`.
@@ -156,14 +154,14 @@ Untuk menghindari risiko ini, pengembang web harus menggunakan cookies dengan ha
 - Tambahkan kode `@login_required(login_url=`/login`)` di atas fungsi `show_main` agar halaman main hanya dapat diakses oleh user yang sudah login (terautentikasi).
 - Membuat berkas HTML baru dengan nama `login.html` pada folder `main/templates`.
 - Buka `urls.py` yang ada pada subdirektori `main` dan impor `from main.views import login_user` .
-- Tambahkan ` path(`login/`, login_user, name=`login`), ` ke dalam `urlpatterns` untuk mengakses fungsi yang sudah diimpor tadi.
+- Tambahkan ` path('login/', login_user, name='login'), ` ke dalam `urlpatterns` untuk mengakses fungsi yang sudah diimpor tadi.
   
 **[LOGOUT]**
 - Buka `views.py` yang ada pada subdirektori `main` dan buatlah fungsi dengan nama `logout_user` yang menerima parameter `request`.
 - Tambahkan import `logout` pada bagian paling atas.
 - Tambahkan beberapa potongan kode setelah hyperlink tag untuk Add New Item pada berkas `main.html`.
 - Buka `urls.py` yang ada pada subdirektori `main` dan impor `from main.views import logout_user` .
-- Tambahkan ` path(`logout/`, logout_user, name=`logout`), ` ke dalam `urlpatterns` untuk mengakses fungsi yang sudah diimpor tadi.
+- Tambahkan ` path('logout/', logout_user, name='logout'), ` ke dalam `urlpatterns` untuk mengakses fungsi yang sudah diimpor tadi.
         
 ✅ Membuat dua akun user dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
 
@@ -366,7 +364,7 @@ Tema dari project saya yaitu aplikasi sederhana mengenai pengelolaan stok restor
     - Buka berkas `urls.py` di dalam direktori proyek `restaurant_list`, bukan yang ada di dalam direktori aplikasi `main`.\
     - Impor fungsi include dari `django.urls` .\
     - Tambahkan rute URL seperti berikut untuk mengarahkan langsung ke tampilan `main` di dalam variabel `urlpatterns` (tanpa harus mengetikkan `/main/` terlebih dahulu).\
-        `.... path(``, include(`main.urls`)),...`
+        `.... path('', include('main.urls')),...`
 
 ✅ Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga dapat diakses melalui Internet.\
     - Setelah login, tekan tombol `New App`. Pilih `Connect an Existing Repository`.\

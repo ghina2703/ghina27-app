@@ -41,13 +41,15 @@ Pemilihan bergantung pada apakah kita memerlukan fitur khusus jQuery atau ingin 
 **===== Implementasi Step-by-Step =====**
 
 ✅ AJAX GET
+
 **Ubahlah kode cards data item agar dapat mendukung AJAX GET:**
-- Pada kode, saya telah memodifikasi bagian HTML di mana saya menambahkan elemen-elemen yang akan ditampilkan sebagai card-item untuk setiap produk. Ini akan menjadi elemen-elemen yang akan diperbarui dengan AJAX GET.
+- Pada kode saya tersebut, saya telah memodifikasi bagian HTML di mana saya menambahkan elemen-elemen yang akan ditampilkan sebagai card-item untuk setiap produk. Ini akan menjadi elemen-elemen yang akan diperbarui dengan AJAX GET.
 
 **Lakukan pengambilan task menggunakan AJAX GET:**
 - Saya telah membuat fungsi `refreshProducts()` yang mengambil data produk dengan AJAX GET. Setiap kali fungsi ini dipanggil, data produk akan diperbarui secara asinkronus dan di-render ulang pada halaman web.
 
 ✅ AJAX POST
+
 **Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item:**
 - Saya telah membuat tombol "Add Item by AJAX" yang memicu modal dengan form untuk menambahkan item saat diklik. Modal ini memungkinkan pengguna untuk memasukkan data produk yang baru.
 
@@ -67,6 +69,8 @@ Pemilihan bergantung pada apakah kita memerlukan fitur khusus jQuery atau ingin 
 
 ✅ Melakukan perintah  `collectstatic `
 - Perintah `collectstatic` telah dijelaskan sebagai langkah untuk mengumpulkan file static dari setiap aplikasi kita ke dalam suatu folder yang dapat dengan mudah disajikan pada produksi. Ini penting agar file-file statis seperti CSS, JavaScript, gambar, dan file lainnya dapat diakses dengan mudah oleh server produksi.
+
+![Alt text](tugas6_collectstatic.png)
 
 ✅ **{BONUS}** Menambahkan fungsionalitas hapus dengan menggunakan AJAX DELETE
 - Dalam views.py saya menambahkan function `delete_item_ajax` dengan parameter 'request' yang akan mengelola permintaan untuk menghapus salah satu item dengan cara `POST.get('nama')`.

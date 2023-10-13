@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import FileExtensionValidator
+# from django.core.validators import FileExtensionValidator
 
 # Create your models here.
 class Item(models.Model):
@@ -16,4 +16,4 @@ class Item(models.Model):
     amount = models.PositiveIntegerField(default=10)
     # === tugas 5
     # Tambahkan field gambar
-    image = models.ImageField(upload_to='item_images/', validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'svg'])], blank=True, null=True)
+    # image = models.ImageField(upload_to='item_images/', validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'svg'])], blank=True, null=True)

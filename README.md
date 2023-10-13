@@ -3,6 +3,78 @@ NPM: 2206825914\
 Kelas: PBP-B\
 Kode Asdos: ZYN
 
+<h1>TUGAS 6</h1>
+
+**===== Link Aplikasi: http://ghina-nabila21-tugas.pbp.cs.ui.ac.id/ =====**
+
+**===== Perbedaan antara Asynchronous Programming dan Synchronous Programming =====**
+
+Perbedaan utama antara asynchronous programming dan synchronous programming adalah cara aplikasi mengelola tugas dan waktu eksekusi. Pada synchronous programming, tugas-tugas dieksekusi secara berurutan, dan setiap tugas harus menunggu selesai sebelum tugas berikutnya dimulai. Sebaliknya, asynchronous programming memungkinkan tugas-tugas untuk berjalan secara bersamaan tanpa harus menunggu satu sama lain. Saat suatu tugas menunggu operasi I/O atau permintaan jaringan selesai, CPU dapat menjalankan tugas lain.
+
+**===== Paradigma Event-Driven Programming pada JavaScript dan AJAX =====**
+
+Paradigma `event-driven programming` mengacu pada cara aplikasi merespons peristiwa yang terjadi secara asinkronus. Aplikasi menunggu peristiwa yang dipicu oleh input user atau hal lainnya dan merespons peristiwa tersebut dengan menjalankan kode yang sesuai. Dalam tugas ini, paradigma ini terlihat dalam penggunaan AJAX. Ketika kita mengirim permintaan AJAX, kita menunggu respons dari server yang dipicu oleh peristiwa seperti klik tombol, dan kita menentukan tindakan apa yang harus diambil ketika respons muncul.
+
+Salah satu contoh penerapannya adalah dalam penggunaan event listener pada elemen HTML. Misalnya, kita bisa menambahkan event listener "click" ke tombol, dan ketika tombol ditekan, kita menjalankan fungsi tertentu.
+
+```javascript
+button.addEventListener("click", function () {
+    // Kode yang akan dijalankan saat tombol ditekan
+});
+```
+
+**===== Penerapan Asynchronous Programming pada AJAX =====**
+
+Penerapan asynchronous programming pada AJAX memungkinkan kita untuk mengirim request ke server dan melanjutkan eksekusi kode tanpa harus menunggu respons dari server. Ini memungkinkan aplikasi untuk tetap responsif, dan memproses banyak permintaan secara bersamaan. Misalnya, saat melakukan permintaan data dari server, aplikasi tidak akan terhenti sementara menunggu data muncul.
+
+**===== Perbandingan Fetch API dengan jQuery pada Penerapan AJAX =====**
+
+Fetch API adalah API bawaan browser yang memungkinkan kita untuk mengirim permintaan jaringan secara asinkronus. Di sisi lain, jQuery adalah library JavaScript yang memiliki fitur AJAX yang kuat.
+
+Pilihan antara Fetch API dan jQuery tergantung pada kebutuhan proyek dan preferensi:
+
+- Fetch API adalah bagian dari spesifikasi JavaScript modern dan digunakan secara luas. Ini memiliki dukungan terintegrasi dalam browser.
+- jQuery adalah library yang lebih berat, tetapi memiliki kompatibilitas lintas browser yang lebih baik dan abstraksi yang lebih tinggi.
+
+Pemilihan bergantung pada apakah kita memerlukan fitur khusus jQuery atau ingin menggunakan Fetch API yang lebih ringan dan lebih modern. Terkadang Fetch API bisa menjadi pilihan yang lebih baik untuk aplikasi yang lebih baru dan ringan. Namun, jika kita bekerja dalam proyek yang sudah menggunakan jQuery atau memerlukan fitur-fitur khusus yang disediakan oleh jQuery, maka mempertimbangkan penggunaan jQuery bisa menjadi pilihan yang baik.
+
+**===== Implementasi Step-by-Step =====**
+
+✅ AJAX GET
+**Ubahlah kode cards data item agar dapat mendukung AJAX GET:**
+- Pada kode, saya telah memodifikasi bagian HTML di mana saya menambahkan elemen-elemen yang akan ditampilkan sebagai card-item untuk setiap produk. Ini akan menjadi elemen-elemen yang akan diperbarui dengan AJAX GET.
+
+**Lakukan pengambilan task menggunakan AJAX GET:**
+- Saya telah membuat fungsi `refreshProducts()` yang mengambil data produk dengan AJAX GET. Setiap kali fungsi ini dipanggil, data produk akan diperbarui secara asinkronus dan di-render ulang pada halaman web.
+
+✅ AJAX POST
+**Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item:**
+- Saya telah membuat tombol "Add Item by AJAX" yang memicu modal dengan form untuk menambahkan item saat diklik. Modal ini memungkinkan pengguna untuk memasukkan data produk yang baru.
+
+- Saat penambahan item berhasil, modal akan ditutup dan form input akan direset, sehingga pengguna dapat memasukkan produk berikutnya tanpa perlu meng-refresh halaman.
+
+**Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data:**
+- Saya telah membuat fungsi view baru bernama  `add_product_ajax` dengan parameter 'request' yang akan mengelola permintaan untuk menambahkan item baru ke dalam basis data. Fungsi ini akan dipanggil saat form pada modal disubmit.
+
+**Buatlah path `/create-ajax/` yang mengarah ke fungsi view yang baru dibuat:**
+- Saya telah menambahkan path `/create-ajax/` yang akan menangani permintaan untuk menambahkan item baru pada urlpatterns di dalam urls.py .
+
+**Hubungkan form yang telah dibuat di dalam modal ke path `/create-ajax/`:**
+- Form pada modal main.html di dalam subdirektori `templates/main` saya terhubung ke path `/create-ajax/`, sehingga data yang dimasukkan oleh pengguna akan dikirim ke server saat form disubmit.
+
+**Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan:**
+- Saat item baru berhasil ditambahkan, saya menggunakan AJAX GET untuk memperbarui halaman utama secara asinkronus dengan membuat function refresh , sehingga item-item terbaru akan ditampilkan tanpa perlu memuat ulang seluruh halaman.
+
+✅ Melakukan perintah  `collectstatic `
+- Perintah `collectstatic` telah dijelaskan sebagai langkah untuk mengumpulkan file static dari setiap aplikasi kita ke dalam suatu folder yang dapat dengan mudah disajikan pada produksi. Ini penting agar file-file statis seperti CSS, JavaScript, gambar, dan file lainnya dapat diakses dengan mudah oleh server produksi.
+
+✅ **{BONUS}** Menambahkan fungsionalitas hapus dengan menggunakan AJAX DELETE
+- Dalam views.py saya menambahkan function `delete_item_ajax` dengan parameter 'request' yang akan mengelola permintaan untuk menghapus salah satu item dengan cara `POST.get('nama')`.
+- Kemudian saya telah menambahkan path `delete_item_ajax/` yang akan menangani permintaan untuk menghapus item pada urlpatterns di dalam urls.py .
+- Dalam berkas main.html pada subdirektori `templates\main` saya telah membuat tombol "Delete Item by AJAX" yang memicu modal dengan form untuk menghapus item saat diklik.
+- Saat penghapusan item berhasil, modal akan ditutup dan form input akan direset, sehingga pengguna dapat menghapus produk tanpa perlu meng-refresh halaman.
+
+
 <h1>TUGAS 5</h1>
 
 **===== Manfaat dari Setiap Element Selector =====**

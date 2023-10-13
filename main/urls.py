@@ -8,6 +8,8 @@ from main.views import add_item, reduce_item, delete_item
 from main.views import edit_item
 from django.conf import settings
 from django.conf.urls.static import static
+# new impor tugas 6
+from main.views import add_product_ajax, get_product_json, delete_item_ajax
 
 
 app_name = 'main'
@@ -29,7 +31,8 @@ urlpatterns = [
     path('delete_item/<int:id>/', delete_item, name='delete_item'),
     # new path tugas 5
     path('edit-item/<int:id>', edit_item, name='edit_item'),
+    # new path tugas 6
+    path('get-product/', get_product_json, name='get_product_json'),
+    path('create-ajax/', add_product_ajax, name='add_product_ajax'),
+    path('delete_item_ajax/', delete_item_ajax, name='delete_item_ajax'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

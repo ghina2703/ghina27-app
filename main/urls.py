@@ -35,4 +35,6 @@ urlpatterns = [
     path('get-product/', get_product_json, name='get_product_json'),
     path('create-ajax/', add_product_ajax, name='add_product_ajax'),
     path('delete_item_ajax/', delete_item_ajax, name='delete_item_ajax'),
+    # new path tugas 9
+    path('create-flutter/', create_product_flutter, name='create_product_flutter'),
 ]

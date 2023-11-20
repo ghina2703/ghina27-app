@@ -10,6 +10,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 # new impor tugas 6
 from main.views import add_product_ajax, get_product_json, delete_item_ajax
+# new impor tugas 9
+from main.views import create_product_flutter
 
 
 app_name = 'main'

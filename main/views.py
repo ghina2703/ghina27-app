@@ -25,7 +25,7 @@ def show_main(request):
     # search_query = request.GET.get('search', '')  # Mendapatkan parameter pencarian dari query string
     items = Item.objects.filter(user=request.user)
     num_items = items.count()
-    last_login = request.COOKIES['last_login']
+    last_login = request.COOKIES.get('last_login', 'N/A')
 
     # Mencari daftar produk berdasarkan nama atau deskripsi yang cocok dengan query pencarian
     # items = items.filter(Q(name__icontains=search_query) | Q(description__icontains=search_query))

@@ -1,8 +1,47 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+import json
+
+@csrf_exempt
+def register(request):
+    try:
+        data = json.loads(request.body)
+        username = data.get('username', '')
+        password = data.get('password', '')
+
+        # Check if username and password are provided
+        if not username or not password:
+            return JsonResponse({
+                'status': False,
+                'message': 'Username and password are required fields.'
+            }, status=400)
+
+        # Check if the username is already taken
+        if User.objects.filter(username=username).exists():
+            return JsonResponse({
+                'status': False,
+                'message': 'Username is already taken. Choose a different one.'
+            }, status=400)
+
+        # Create a new user
+        user = User.objects.create_user(username=username, password=password)
+
+        return JsonResponse({
+            'status': True,
+            'message': 'User registered successfully.',
+            'username': user.username
+        }, status=201)
+    
+    except Exception as e:
+        return JsonResponse({
+            'status': False,
+            'message': f'Registration failed. Error: {str(e)}'
+        }, status=500)
+
 
 @csrf_exempt
 def login(request):

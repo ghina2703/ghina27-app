@@ -42,6 +42,7 @@ def show_main(request):
 
 # ========= tugas 3
 
+@csrf_exempt
 def create_item(request):
     if request.method == "POST":
         # form = ItemForm(request.POST, request.FILES) # Menggunakan request.FILES untuk menangani file gambar
@@ -76,6 +77,7 @@ def show_json_by_id(request, id):
 
 # ======== tugas 4
 
+@csrf_exempt
 def register(request):
     form = UserCreationForm()
 
@@ -88,6 +90,7 @@ def register(request):
     context = {'form':form}
     return render(request, 'register.html', context)
 
+@csrf_exempt
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -132,6 +135,7 @@ def delete_item(request, id):
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('main:show_main'))
 
+@csrf_exempt
 def edit_item(request, id):
     item = get_object_or_404(Item, pk=id)
     if request.method == "POST":
@@ -152,6 +156,7 @@ def get_product_json(request):
 
 
 #========= tugas 6
+
 @csrf_exempt
 def add_product_ajax(request):
     if request.method == 'POST':
@@ -183,6 +188,7 @@ def delete_item_ajax(request):
     return HttpResponseNotFound()
 
 #========= tugas 9
+
 @csrf_exempt
 def create_product_flutter(request):
     if request.method == 'POST':

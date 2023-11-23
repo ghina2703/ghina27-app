@@ -77,7 +77,7 @@ def show_json_by_id(request, id):
 
 # ======== tugas 4
 
-@csrf_exempt
+# @csrf_exempt
 def register(request):
     form = UserCreationForm()
 
@@ -90,7 +90,7 @@ def register(request):
     context = {'form':form}
     return render(request, 'register.html', context)
 
-@csrf_exempt
+# @csrf_exempt
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -198,6 +198,7 @@ def create_product_flutter(request):
         new_product = Product.objects.create(
             user = request.user,
             name = data["name"],
+            amount = int(data["amount"]),
             price = int(data["price"]),
             description = data["description"]
         )

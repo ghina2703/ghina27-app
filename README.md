@@ -5,7 +5,7 @@ Kode Asdos: ZYN
 
 <h1>TUGAS 6</h1>
 
-**===== Link Aplikasi: http://ghina-nabila21-tugas.pbp.cs.ui.ac.id/ =====**
+**===== Link Aplikasi: https://ghina-nabila21-tugas.pbp.cs.ui.ac.id/ =====**
 
 **===== Perbedaan antara Asynchronous Programming dan Synchronous Programming =====**
 
